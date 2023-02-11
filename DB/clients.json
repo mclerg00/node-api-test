@@ -1,0 +1,236 @@
+[
+  {
+    "email": "client@email.com",
+    "name": "John",
+    "surname": "Smith",
+    "addresses": [
+      {
+        "address_id": 1,
+        "street": "123 Central Street",
+        "city": "London",
+        "country": "UK"
+      }
+    ],
+    "phone": "+1 123456789",
+    "client_id": 1
+  },
+  {
+    "email": "client1@email.com",
+    "name": "Jane",
+    "surname": "Doe",
+    "addresses": [
+      {
+        "address_id": 1,
+        "street": "456 North Street",
+        "city": "Paris",
+        "country": "France"
+      }
+    ],
+    "phone": "+33 123456789",
+    "client_id": 2
+  },
+  {
+    "email": "client2@email.com",
+    "name": "Michael",
+    "surname": "Johnson",
+    "addresses": [
+      {
+        "address_id": 1,
+        "street": "789 South Street",
+        "city": "Berlin",
+        "country": "Germany"
+      }
+    ],
+    "phone": "+49 123456789",
+    "client_id": 3
+  },
+  {
+    "email": "client3@email.com",
+    "name": "Eva",
+    "surname": "García",
+    "addresses": [
+      {
+        "address_id": 1,
+        "street": "147 Plaza mayor",
+        "city": "Madrid",
+        "country": "Spain"
+      }
+    ],
+    "phone": "+34 123456789",
+    "client_id": 4
+  },
+  {
+    "email": "client4@email.com",
+    "name": "Olivia",
+    "surname": "Williams",
+    "addresses": [
+      {
+        "address_id": 1,
+        "street": "258 West Street",
+        "city": "Rome",
+        "country": "Italy"
+      },
+      {
+        "address_id": 2,
+        "street": "369 East Street",
+        "city": "Milan",
+        "country": "Italy"
+      }
+    ],
+    "phone": "+39 123456789",
+    "client_id": 5
+  },
+  {
+    "email": "client5@email.com",
+    "name": "Ava",
+    "surname": "Jones",
+    "addresses": [
+      {
+        "address_id": 1,
+        "street": "369 North Street",
+        "city": "Prague",
+        "country": "Czech Republic"
+      }
+    ],
+    "phone": "+420 123456789",
+    "client_id": 6
+  },
+  {
+    "email": "test@email.com",
+    "name": "Sophia",
+    "surname": "Brown",
+    "addresses": [
+      {
+        "address_id": 1,
+        "street": "147 Plaza mayor",
+        "city": "Madrid",
+        "country": "Spain"
+      },
+      {
+        "address_id": 2,
+        "street": "258 West Street",
+        "city": "Rome",
+        "country": "Italy"
+      },
+      {
+        "address_id": 3,
+        "street": "369 East Street",
+        "city": "Milan",
+        "country": "Italy"
+      },
+      {
+        "address_id": 4,
+        "street": "369 North Street",
+        "city": "Prague",
+        "country": "Czech Republic"
+      }
+    ],
+    "phone": "+48 123456789",
+    "client_id": 7
+  },
+  {
+    "email": "test2@email.com",
+    "name": "Isabella",
+    "surname": "Davis",
+    "addresses": [
+      {
+        "address_id": 1,
+        "street": "258 South Street",
+        "city": "Budapest",
+        "country": "Hungary"
+      }
+    ],
+    "phone": "+36 123456789",
+    "client_id": 8
+  },
+  {
+    "email": "test3@email.com",
+    "name": "Charlotte",
+    "surname": "Miller",
+    "addresses": [
+      {
+        "address_id": 1,
+        "street": "369 West Street",
+        "city": "Vienna",
+        "country": "Austria"
+      }
+    ],
+    "phone": "+43 123456789",
+    "client_id": 9
+  },
+  {
+    "email": "test4@email.com",
+    "name": "Amelia",
+    "surname": "Wilson",
+    "addresses": [
+      {
+        "address_id": 1,
+        "street": "147 North Street",
+        "city": "Brussels",
+        "country": "Belgium"
+      },
+      {
+        "address_id": 2,
+        "street": "258 South Street",
+        "city": "Budapest",
+        "country": "Hungary"
+      }
+    ],
+    "phone": "+32 123456789",
+    "client_id": 10
+  },
+  {
+    "client_id": 11,
+    "name": "Eva",
+    "surname": "García",
+    "email": "user88@email.com",
+    "phone": "+34 65854685476",
+    "addresses": [
+      {
+        "address_id": 1,
+        "street": "47 Plaza mayor",
+        "city": "Rome",
+        "country": "Spain"
+      },
+      {
+        "address_id": 2,
+        "street": "258 West Street",
+        "city": "Rome",
+        "country": "Italy"
+      },
+      {
+        "address_id": 3,
+        "street": "369 East Street",
+        "city": "Milan",
+        "country": "Italy"
+      },
+      {
+        "address_id": 4,
+        "street": "369 North Street",
+        "city": "Prague",
+        "country": "Czech Republic"
+      }
+    ]
+  },
+  {
+    "client_id": 12,
+    "name": "Eva",
+    "surname": "García",
+    "email": "user1654@email.com",
+    "phone": "+34 123456789",
+    "addresses": [
+      {
+        "address_id": 1,
+        "street": "7 Plaza mayor",
+        "city": "Madrid",
+        "country": "Spain"
+      },
+      {
+        "street": "333 Plaza mayor",
+        "city": "Madrid",
+        "country": "Spain",
+        "address_id": 2
+      }
+    ]
+  }
+]

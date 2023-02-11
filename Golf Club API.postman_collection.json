@@ -1,0 +1,673 @@
+{
+	"info": {
+		"_postman_id": "b4653e24-e01b-4f10-a25f-f11687a714ac",
+		"name": "Golf Club API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Clients",
+			"item": [
+				{
+					"name": "Address",
+					"item": [
+						{
+							"name": "Get addresses",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test( \"GetNameTestCollection\", function() {\r",
+											"    pm.response.to.have.status(200)\r",
+											"    pm.response.to.be.withBody\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/clients/::user_id/address",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"clients",
+										"::user_id",
+										"address"
+									],
+									"variable": [
+										{
+											"key": ":user_id",
+											"value": "12"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add address",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test( \"GetNameTestCollection\", function() {\r",
+											"    pm.response.to.have.status(200)\r",
+											"    pm.response.to.be.withBody\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"street\": \"7 Plaza mayor\",\r\n    \"city\": \"Madrid\",\r\n    \"country\": \"Spain\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/clients/::user_id/address",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"clients",
+										"::user_id",
+										"address"
+									],
+									"variable": [
+										{
+											"key": ":user_id",
+											"value": "12"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Address",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test( \"GetNameTestCollection\", function() {\r",
+											"    pm.response.to.have.status(200)\r",
+											"    pm.response.to.be.withBody\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"street\": \"47 Plaza mayor\",\r\n    \"city\": \"Madrid\",\r\n    \"country\": \"Spain\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/clients/::client_id/address/::address_id",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"clients",
+										"::client_id",
+										"address",
+										"::address_id"
+									],
+									"variable": [
+										{
+											"key": ":client_id",
+											"value": "12"
+										},
+										{
+											"key": ":address_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Address",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test( \"GetNameTestCollection\", function() {\r",
+											"    pm.response.to.have.status(200)\r",
+											"    pm.response.to.be.withBody\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/clients/::client_id/address/::address_id",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"clients",
+										"::client_id",
+										"address",
+										"::address_id"
+									],
+									"variable": [
+										{
+											"key": ":client_id",
+											"value": "12"
+										},
+										{
+											"key": ":address_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Clients",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test( \"GetNameTestCollection\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"    pm.response.to.be.withBody\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/clients?first=5&page=1&country=italy&city=madrid",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"clients"
+							],
+							"query": [
+								{
+									"key": "first",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "country",
+									"value": "italy"
+								},
+								{
+									"key": "city",
+									"value": "madrid"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Client by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test( \"GetNameTestCollection\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"    pm.response.to.be.withBody\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/clients/::user_id",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"clients",
+								"::user_id"
+							],
+							"variable": [
+								{
+									"key": ":user_id",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test( \"GetNameTestCollection\", function() {\r",
+									"    pm.response.to.have.status(201)\r",
+									"    pm.response.to.be.withBody\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user1654@email.com\",\r\n    \"name\": \"Eva\",\r\n    \"surname\": \"García\",\r\n    \"addresses\": [\r\n        {\r\n            \"street\": \"147 Plaza mayor\",\r\n            \"city\": \"Madrid\",\r\n            \"country\": \"Spain\"\r\n        }\r\n    ],\r\n    \"phone\": \"+34 123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/clients",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test( \"GetNameTestCollection\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"    pm.response.to.be.withBody\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user76588@email.com\",\r\n    \"name\": \"Eva\",\r\n    \"surname\": \"García\",\r\n    \"addresses\": [\r\n        {\r\n            \"street\": \"17 Plaza mayor\",\r\n            \"city\": \"Madrid\",\r\n            \"country\": \"Spain\"\r\n        },\r\n                {\r\n            \"street\": \"16 Plaza mayor\",\r\n            \"city\": \"Madrid\",\r\n            \"country\": \"Spain\"\r\n        }\r\n    ],\r\n    \"phone\": \"+34 65854685476\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/clients/::user_id",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"clients",
+								"::user_id"
+							],
+							"variable": [
+								{
+									"key": ":user_id",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test( \"GetNameTestCollection\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"    pm.response.to.be.withBody\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"addresses\": [\r\n        {\r\n            \"street\": \"12247 Plaza mayor\",\r\n            \"city\": \"Madrid\",\r\n            \"country\": \"Italy\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/clients/::user_id",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"clients",
+								"::user_id"
+							],
+							"variable": [
+								{
+									"key": ":user_id",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test( \"GetNameTestCollection\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"    pm.response.to.be.withBody\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/clients/::user_id",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"clients",
+								"::user_id"
+							],
+							"variable": [
+								{
+									"key": ":user_id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{acess_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Register account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test( \"GetNameTestCollection\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"    pm.response.to.be.withBody\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@test.com\",\r\n    \"password\": \"Ff34-dd35Q!gTpjF$0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonResponse = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set('acess_token', jsonResponse.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"tes2243t@test.com\",\r\n    \"password\": \"Ff34-dd35Q!gTpjF$0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test( \"GetNameTestCollection\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"    pm.response.to.be.withBody\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"tes2243t@test.com\",\r\n    \"password\": \"Ff34-dd35Q!gTpjF$0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/auth/delete",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test( \"GetNameTestCollection\", function() {",
+							"    pm.response.to.have.status(200)",
+							"    pm.response.to.be.withBody",
+							"})"
+						]
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "acess_token",
+			"value": ""
+		}
+	]
+}

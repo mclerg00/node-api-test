@@ -1,0 +1,7 @@
+[
+  {
+    "email": "test@test.com",
+    "password": "$2b$10$pCh2OvAgLXf1FyJ.ItSqceBw79U1L2XuCI/PRSylTe7MF98.CwkVW",
+    "refreshJWT": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE2NzYwODYyNTQsImV4cCI6MTY3NjE3MjY1NH0.oQXi6Mz58QisyEtKV9bKrw6bTSgcogRm6uqdDpVJHck"
+  }
+]

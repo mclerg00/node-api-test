@@ -1,0 +1,511 @@
+openapi: 3.0.3
+info:
+  title: Swagger golf club test - OpenAPI 3.0
+  description: |-
+    Simple golf club server based on the OpenAPI 3.0 specification.
+  version: 1.0.0
+servers:
+  - url:  http://localhost:5000/api
+tags:
+  - name: Auth
+  - name: Clients
+security:
+  - bearerAuth: []
+paths:
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Register
+      security: []
+      description: Register a new admin user.
+      operationId: register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Credentials"
+      responses:
+        201:
+          description: Account added
+        400:
+          description: Invalid input
+        409:
+          description: Account email already exists
+        500:
+          description: Internal server error
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Admin login
+      security: []
+      description: Login using email and password for admins. Returns a JWT token that can be used for subsequent requests.
+      operationId: adminLogin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Credentials"
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - access_token
+                  - refresh_token
+                properties:
+                  access_token:
+                    type: string
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE2NzYwNzAxNzgsImV4cCI6MTY3NjA3MDc3OH0.k1Dbq7TL2bgtWhQadBFl1zZbLgQytvnG_PXCs5aRhIc
+                    description: The access token of the client
+                  refresh_token:
+                    type: string
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE2NzYwNzAxNzgsImV4cCI6MTY3NjE1NjU3OH0.aYlQjQo0r6bQZhe3Ux2XkjOyh1bW_WJ9OgFxGef6TBg
+                    description: The refresh token of the client
+        400:
+          description: Invalid input
+        500:
+          description: Internal server error
+  /auth/delete:
+    delete:
+      tags:
+        - Auth
+      summary: Delete user
+      security: []
+      description: Delete a user.
+      operationId: deleteUser
+      responses:
+        200:
+          description: successful operation
+        400:
+          description: Invalid input
+        401:
+          description: Invalid token
+        404:
+          description: Not Found
+        500:
+          description: Internal server error
+
+  /clients:
+    post:
+      tags:
+        - Clients
+      summary: Create client
+      operationId: createClient
+      requestBody:
+        description: Created client object
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Client"
+        required: true
+      responses:
+        201:
+          description: Created
+        400:
+          description: Invalid input
+        401:
+          description: Invalid token
+        409:
+          description: Client already exists
+        500:
+          description: Internal server error
+    get:
+      tags:
+        - Clients
+      summary: Get all clients
+      description: Get a list of 100 clients.
+      operationId: getClients
+      parameters:
+        - name: first
+          in: query
+          description: How many clients to return at one time (max 100)
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: page
+          in: query
+          description: The page number to return
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: country
+          in: query
+          description: Filter by country
+          required: false
+          schema:
+            type: string
+        - name: city
+          in: query
+          description: Filter by city
+          required: false
+          schema:
+            type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/ClientWithId"
+                      
+                      
+        400:
+          description: Invalid input
+        401:
+          description: Invalid token
+        404:
+          description: No clients found
+        500:
+          description: Internal server error
+
+
+  /clients/{client_id}:
+    put:
+      tags:
+        - Clients
+      summary: Update client information
+      description: Update client information. All the fields should be filled in.
+      operationId: updateClient
+      requestBody:
+        description: Updated client object
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Client"
+        required: true
+      parameters:
+        - name: client_id
+          in: path
+          description: The id of the client
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Client updated
+        400:
+          description: Invalid input
+        401:
+          description: Invalid token
+        404:
+          description: Client not found
+        409:
+          description: Client email already in use
+        500:
+          description: Internal server error
+    patch:
+      tags:
+        - Clients
+      summary: Update specific client information
+      description: Update client information. Only the fields that need to be updated should be filled in.
+      operationId: updateClientPart
+      requestBody:
+        description: Updated client object
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Client"
+        required: true
+      parameters:
+        - name: client_id
+          in: path
+          description: The id of the client
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Client updated
+        400:
+          description: Invalid input
+        401:
+          description: Invalid token
+        404:
+          description: Client not found
+        409:
+          description: Client email already in use
+        500:
+          description: Internal server error
+    get:
+      tags:
+        - Clients
+      summary: Get client information
+      description: Get client information.
+      operationId: getClient
+      parameters:
+        - name: client_id
+          in: path
+          description: The id of the client
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Client information
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ClientWithId"
+        400:
+          description: Invalid input
+        401:
+          description: Invalid token
+        404:
+          description: Client not found
+        500:
+          description: Internal server error
+    delete:
+      tags:
+        - Clients
+      summary: Delete client
+      description: Delete client.
+      operationId: deleteClient
+      parameters:
+        - name: client_id
+          in: path
+          description: The id of the client
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Client deleted
+        400:
+          description: Invalid input
+        401:
+          description: Invalid token
+        404:
+          description: Client not found
+        500:
+          description: Internal server error
+  /clients/{client_id}/address:
+    get:
+      tags:
+        - Clients
+      summary: Get client addresses
+      description: Get client addresses.
+      operationId: getClientAddresses
+      parameters:
+        - name: client_id
+          in: path
+          description: The id of the client
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Client addresses
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Address"
+        400:
+          description: Invalid input
+        401:
+          description: Invalid token
+        404:
+          description: Client not found
+        500:
+          description: Internal server error
+    post:
+      tags:
+        - Clients
+      summary: Add client address
+      description: Add client address.
+      operationId: addClientAddress
+      requestBody:
+        description: Client address object
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Address"
+        required: true
+      parameters:
+        - name: client_id
+          in: path
+          description: The id of the client
+          required: true
+          schema:
+            type: string
+      responses:
+        201:
+          description: Client address added
+        400:
+          description: Invalid input
+        401:
+          description: Invalid token
+        404:
+          description: Client not found
+        409:
+          description: Address already exists for this client
+        500:
+          description: Internal server error
+  /clients/{client_id}/address/{address_id}:
+    patch:
+      tags:
+        - Clients
+      summary: Update specific client address information
+      description: Update client address information. Only the fields that need to be updated should be filled in.
+      operationId: updateClientAddress
+      requestBody:
+        description: Updated client address object
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Address"
+        required: true
+      parameters:
+        - name: client_id
+          in: path
+          description: The id of the client
+          required: true
+          schema:
+            type: string
+        - name: address_id
+          in: path
+          description: The number of the address
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Client address updated
+        400:
+          description: Invalid input
+        401:
+          description: Invalid token
+        404:
+          description: Client not found
+        409:
+          description: Address already exists for this client
+        500:
+          description: Internal server error
+    delete:
+      tags:
+        - Clients
+      summary: Delete client address
+      description: Delete client address.
+      operationId: deleteClientAddress
+      parameters:
+        - name: client_id
+          in: path
+          description: The id of the client
+          required: true
+          schema:
+            type: string
+        - name: address_id
+          in: path
+          description: The number of the address
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Client address deleted
+        400:
+          description: Invalid input
+        401:
+          description: Invalid token
+        404:
+          description: Client not found
+        500:
+          description: Internal server error
+
+
+
+components:
+  schemas:
+    Client:
+      type: object
+      required:
+        - email
+        - name
+        - surname
+        - addresses
+        - phone
+      properties:
+        email:
+          type: string
+          format: email
+          example: client@email.com
+          description: The email of the client
+        name:
+          type: string
+          example: John
+          description: The name of the client
+        surname:
+          type: string
+          example: Smith
+          description: The surname of the client
+        phone:
+          type: string
+          example: +1 123456789
+          description: The phone number of the client, must include country code at the beginning
+        addresses:
+          type: array
+          items:
+            $ref: "#/components/schemas/Address"
+          description: The addresses of the client
+    ClientWithId:
+      allOf:
+        - $ref: "#/components/schemas/Client"
+        - type: object
+          required:
+            - client_id
+          properties:
+            client_id:
+              type: integer
+              example: 532
+              description: The client id of the client
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+          example: 123 Central Street
+          description: The street of the client
+        city:
+          type: string
+          example: London
+          description: The city of the client
+        country:
+          type: string
+          example: UK
+          description: The country of the client
+    Credentials:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          example: test@email.com
+          description: The email of the account
+        password:
+          type: string
+          example: c5dGA43263%-2365@8e9
+          description: The password of the account
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: The access token of the client
